@@ -1,0 +1,249 @@
+/* Configurações globais e fonte */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+/* Vídeo de fundo e overlay */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre toda a tela sem distorcer */
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Overlay escuro */
+    z-index: -1;
+}
+
+/* Conteúdo principal centralizado */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 800px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Título "Trie-legal" */
+.main-title {
+    /* Usando a fonte arredondada 'Nunito' */
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 5rem; /* Fonte bem maior */
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    margin-bottom: 1.5rem;
+}
+
+/* Barra de busca (formato pílula) */
+.search-form {
+    display: flex;
+    width: 100%;
+}
+
+.search-form input[type="text"] {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    /* Cantos arredondados (pílula - lado esquerdo) */
+    border-radius: 50px 0 0 50px;
+    color: #333;
+}
+
+.search-form button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    /* Cantos arredondados (pílula - lado direito) */
+    border-radius: 0 50px 50px 0;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.search-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Container de resultados */
+.results-container {
+    width: 100%;
+}
+
+.search-stats {
+    font-size: 0.9rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.no-results {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.result-item {
+    /* Fundo semi-transparente para legibilidade */
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.result-title {
+    margin-top: 0;
+    /* Cor de link mais clara */
+    color: #a0cfff;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.result-snippet {
+    color: #f0f0f0; /* Texto levemente mais suave que branco puro */
+}
+
+/* Destaque do snippet */
+.result-snippet strong {
+    background-color: #f0e68c; /* Amarelo pálido */
+    color: #333; /* Texto escuro para contraste */
+    font-weight: 700;
+    padding: 1px 0;
+}
+
+.result-relevance {
+    font-size: 0.85rem;
+    color: #ccc;
+    display: block;
+    margin-top: 1rem;
+}
+
+/* paginação */
+.pagination {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #a0cfff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #a0cfff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin: 0 0.25rem;
+    transition: background-color 0.2s;
+}
+
+.pagination a:hover {
+    background-color: rgba(160, 207, 255, 0.2);
+}
+
+.pagination span {
+    padding: 0.5rem 1rem;
+    color: #f0f0f0;
+    font-weight: bold;
+}
+
+/* Estilo para o link do resultado (snippet clicável) */
+.result-link {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: inherit; /* Faz o link herdar a cor (branca) do pai */
+    display: block; /* Faz o link ocupar o espaço do bloco */
+}
+
+/* Efeito hover sutil no 'cartão' quando o link está em hover */
+.result-link:hover .result-item {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Estilos da página de documento */
+
+.document-container {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.document-title {
+    font-family: 'Nunito', sans-serif;
+    color: #a0cfff;
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #a0cfff;
+    border: 1px solid #a0cfff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.2s;
+}
+
+.back-link:hover {
+    background-color: rgba(160, 207, 255, 0.2);
+}
+
+.document-content pre {
+    color: #f0f0f0; 
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Estilo para o link do resultado (snippet clicável) */
+.result-link {
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+}
+
+.result-link:hover .result-item {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-color: rgba(255, 255, 255, 0.5);
+}

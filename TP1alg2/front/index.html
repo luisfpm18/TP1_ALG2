@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trie-legal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+
+    <div class="video-background">
+        <video playsinline autoplay muted loop id="bg-video">
+            <source src="{{ url_for('static', filename='wallpaper.mp4') }}" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+    </div>
+
+    <div class="video-overlay"></div>
+
+    <main class="content">
+        <header>
+            <h1 class="main-title">Trie-legal</h1>
+            <form action="/search" method="GET" class="search-form">
+                <input type="text" name="consulta_usuario" placeholder="Pesquise na Trie-legal"
+                    value="{{ consulta_usuario | default('', true) }}">
+                <button type="submit">Buscar</button>
+            </form>
+        </header>
+
+        <div class="results-container">
+            {% if estatisticas %}
+            <div class="search-stats">
+                <p>
+                    Página {{ estatisticas.pagina }} de {{ estatisticas.maxima_pagina }}.
+                    Encontrados {{ estatisticas.total }} resultados em {{ "%.4f"|format(estatisticas.duracao) }}
+                    segundos.
+                </p>
+            </div>
+            {% endif %}
+
+            <div class="results-list">
+
+                {% for res in resultados %}
+                <a href="/documento/{{ res.id_doc }}" class="result-link">
+                    <div class="result-item">
+
+                        <h3 class="result-title">{{ res.caminho_exibicao }}</h3>
+
+                        <p class="result-snippet">
+                            {{ res.snippet | safe }}
+                        </p>
+
+                        <small class="result-relevance">Relevância (z-score médio): {{ "%.3f"|format(res.relevancia)
+                            }}</small>
+                    </div>
+                </a>
+                {% endfor %}
+                {% if not resultados and consulta_usuario %}
+                <p class="no-results">Nenhum resultado encontrado para "<strong>{{ consulta_usuario }}</strong>".</p>
+                {% endif %}
+            </div>
+
+            {% if estatisticas and estatisticas.maxima_pagina > 1 %}
+            <nav class="pagination">
+                {% if estatisticas.pagina > 1 %}
+                <a
+                    href="/search?consulta_usuario={{ estatisticas.consulta_usuario }}&pagina={{ estatisticas.pagina - 1 }}">&laquo;
+                    Anterior</a>
+                {% endif %}
+
+                <span>Página {{ estatisticas.pagina }}</span>
+
+                {% if estatisticas.pagina < estatisticas.maxima_pagina %} <a
+                    href="/search?consulta_usuario={{ estatisticas.consulta_usuario }}&pagina={{ estatisticas.pagina + 1 }}">
+                    Próxima &raquo;</a>
+                    {% endif %}
+            </nav>
+            {% endif %}
+        </div>
+    </main>
+</body>
+
+</html>

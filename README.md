@@ -1,3 +1,5 @@
+```text
+
 Bom dia, Vimieiro.
 Esperamos que o projeto o agrade.
 
@@ -9,6 +11,8 @@ cd TP1alg2
 python py/app.py
 
 10 páginas de relatório (muito esparsas).
+
+Esta é a organização dos arquivos e diretórios do projeto.
 
 ├── pasta py
 │   ├── app.py

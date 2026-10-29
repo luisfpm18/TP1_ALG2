@@ -1,7 +1,4 @@
 ```text
-Bom dia, Vimieiro.
-Esperamos que o projeto o agrade.
-
 Instruções para executar o servidor:
 
 Favor colocar a pasta bbc dentro de TP1alg2.
